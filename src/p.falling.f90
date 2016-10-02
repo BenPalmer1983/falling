@@ -313,8 +313,8 @@ Module fallingMod
       write(999,"(F16.5,F16.5,F16.5,F16.5,F16.5,F16.5,F16.5)") &
       (-1.0D0*fallingObj%fallingData%dataPoints(n,2)), &
       (-1.0D0*fallingObj%fallingData%dataPoints(n,1)), &
-      fallingObj%fallingData%dataPoints(n,3), &
       fallingObj%fallingData%dataPoints(n,4), &
+      fallingObj%fallingData%dataPoints(n,3), &
       fallingObj%fallingData%dataPoints(n,5), &
       time, &
       (time+dt)
