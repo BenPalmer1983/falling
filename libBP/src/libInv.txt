@@ -1,0 +1,502 @@
+Script:       List Fortran Subroutines and Functions
+Working dir:  /code/lib/libBP/src
+User:         ben
+========================================================================
+Module activityFunctionsTypes        activityFunctions.f90
+========================================================================
+========================================================================
+Module activityFunctions        activityFunctions.f90
+========================================================================
+  Function CalcIsotopeAmount(w,decayDataArray,t,calcOptionIn) RESULT (isotopeChange)
+  Function CalcIsotopeAmountGS(t,isotopeStep,isotopeChangeIn) RESULT (output)
+  Function MaxTrajDepth(coefficients, maxDepthIn) RESULT (maxDepth)
+  Function ArraySize1DDouble (inputArray,arraySize) RESULT (outputArray)
+  Function ArraySize2DDouble (inputArray,arraySizeHeight,arraySizeWidthIn) &
+  Subroutine ActivityCompareGS(lambda, dataPointsCount, endTime, nAtoms, productionRate)
+  Subroutine decayChainComplete(decayChain)
+  Subroutine decayChainPrint(decayChain)
+  Subroutine CalcIsotopeChainGS(decayChain)
+  Subroutine CalcIsotopeChain(decayChain)
+  Subroutine DecayBreakInfinities(L,n)
+  Function CalcIsotopeChainCalc(t,m,W,L,N,B) Result (nEnd)
+  Function CalcIsotopeChainMultR(k,m,L,B) Result (multR)
+  Function CalcIsotopeChainF_Unstable(k,m,t,mult,L) Result (nChange)
+  Function CalcIsotopeChainG_Unstable(k,m,t,mult,L) Result (nChange)
+  Function CalcIsotopeChainF_Stable(k,mIn,t,mult,L) Result (nChange)
+  Function CalcIsotopeChainG_Stable(k,mIn,t,mult,L) Result (nChange)
+  Function CalcIsotopeChainC(L,k,m) Result (numerator)
+  Subroutine CalcActivities(decayChain,activityTime,endTime,zeroProductionTimeIn)
+  Subroutine CalcActivitiesPrint(decayChain,activityTime,tableIn)
+========================================================================
+Module arrayFunctions        arrayFunctions.f90
+========================================================================
+  Interface PrintMatrix
+  Interface swapRows
+  Subroutine PrintMatrix_1D(xMatrix)
+  Subroutine PrintMatrix_2D(xMatrix)
+  Subroutine extractArrayColumnDP(inputArray,outputArray,column)
+  Subroutine extractArrayColumnInt(inputArray,outputArray)
+  Subroutine swapRows_Integer_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Integer_2D(matrix,rowA,rowB)
+  Subroutine swapRows_Single_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Single_2D(matrix,rowA,rowB)
+  Subroutine swapRows_Double_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Double_2D(matrix,rowA,rowB)
+  Subroutine swapRows_Char_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Char_2D(matrix,rowA,rowB)
+========================================================================
+Module basicMaths        basicMaths.f90
+========================================================================
+  Interface Modulus
+  Function RoundDP(dpIn) RESULT (intOut)
+  Function BinomialCoefficient(n,k) RESULT (c)
+  Function BinomialCoefficientDP(n,k) RESULT (c)
+  Function BinomialCoefficientQ(n,k) RESULT (c)
+  Function Odd(input) RESULT (output)
+  Function Even(input) RESULT (output)
+  Function RSSCalc(inputA, inputB, factorIn) RESULT (output)
+  Function RSSPoints(xArr, yArr) RESULT (output)
+  Function Modulus_I(x, divisor) RESULT (y)
+  Function Modulus_R(x, divisor) RESULT (y)
+  Function CompareSign(x,y) Result (output)
+  Function Factorial(input) RESULT (output)
+  Function FactorialDP(input) RESULT (output)
+  Function FactorialQ(input) RESULT (output)
+  Function Fib(input) RESULT (output)
+  Subroutine combinationsPrint(setSize, numbersUsed)
+========================================================================
+Module calcFunctions        calcFunctions.f90
+========================================================================
+  Function Gaussian(x, sigma, mu) RESULT (y)
+  Function MaxwellBoltzman(x, a) RESULT (y)
+  Function CalcPolynomial(polyCoefficientsIn, x, derivIn) RESULT (y)
+  Function CalcPolynomialExp(polyCoefficientsIn, x, derivIn) RESULT (y)
+  Function ExpCalc(x,coefficients) RESULT (y)
+  Function BirchMurnCalc(volume,coefficients) RESULT (energy)
+  Function Zbl (x, qA, qB) RESULT (y)
+  Function ZblFull (x, qA, qB) RESULT (yArray)
+  Function EmbeddingA(x, parameters) RESULT (yArray)
+  Function EmbeddingB(x, parameters) RESULT (yArray)
+  Function EmbeddingC(x, parameters) RESULT (yArray)
+========================================================================
+Module constants        constants.f90
+========================================================================
+========================================================================
+Module coordFunctions        coordFunctions.f90
+========================================================================
+  Function TransformCoords (xVect, tVect) RESULT (xPVect)
+  Function RdCoords (xVect, yVect) RESULT (rd)
+  Function HeatCoords (inCoords, maxVar) RESULT (outCoords)
+========================================================================
+Module envTypes        env.f90
+========================================================================
+========================================================================
+Module env        env.f90
+========================================================================
+  Subroutine loadVars()
+  Subroutine systemR(commandIn, commandOut)
+  Subroutine progInstalled(progName)
+  Function GetHomeDirText (input) RESULT (output)
+========================================================================
+Module fileOutTypes        fileOut.f90
+========================================================================
+========================================================================
+Module fileOut        fileOut.f90
+========================================================================
+  Subroutine outputFile(fileOut_In)
+========================================================================
+Module functionPoints        functionPoints.f90
+========================================================================
+  Function MakeFunctionPoints(calcFunction,parameters,xStart,xEnd,pointCount) RESULT (dataPoints)
+  Function PolyPoints(parameters,xStart,xEnd,pointCount) RESULT (dataPoints)
+  Function BirchMurnPoints(parameters,xStart,xEnd,pointCount) RESULT (dataPoints)
+========================================================================
+Module general        general.f90
+========================================================================
+  Function GetClockTime () RESULT (outputTime)
+  Function dpToString(inputDP) RESULT (outputString)
+  Function intToString(inputInt) RESULT (outputString)
+  Subroutine makeDir(path)
+  Subroutine rmFile(path)
+  Subroutine rmDir(path)
+  Subroutine correctFilePath (filePath)
+  Subroutine readFile(inputFilePath, fileArray, n)
+  Subroutine readCSV(inputFilePath, fieldSeparator, csvArray, rows, columns)
+  Subroutine readFieldsCharacter(inputRow,outputArray,fieldCount)
+  Subroutine PrintMatrix(xMatrix)
+  Subroutine extractArrayColumnDP(inputArray,outputArray,column)
+  Subroutine extractArrayColumnInt(inputArray,outputArray)
+  Subroutine swapArrayRows1D(matrix,rowA,rowB)
+  Subroutine swapArrayRows2D(matrix,rowA,rowB)
+  Subroutine swapRows_Integer_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Integer_2D(matrix,rowA,rowB)
+  Subroutine swapRows_Single_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Single_2D(matrix,rowA,rowB)
+  Subroutine swapRows_Double_1D(matrix,rowA,rowB)
+  Subroutine swapRows_Double_2D(matrix,rowA,rowB)
+  Subroutine sort_Integer_1D(list)
+  Subroutine sort_Integer_2D(list, sortRow)
+  Subroutine strToIntArr(stringIn,intArr)
+  Subroutine strToDPArr(stringIn,dpArr)
+  Subroutine strToStrArr(stringIn,strArr)
+  Subroutine timeAcc(time,timeStart,timeEnd)
+  Subroutine completePath(pathIn)
+  Function FileExists(filePath) Result (boolOut)
+  Function CountRowFields(fileRow) Result (fieldCount)
+========================================================================
+Module geomTypes        geom.f90
+========================================================================
+========================================================================
+Module geom        geom.f90
+========================================================================
+  Subroutine initUnitCoords(coords)
+  Subroutine initCoords(coords)
+  Subroutine standardCoords(typeCell, coords, cKey)
+  Subroutine expandUnitCoords(coordsUnit, coords)
+  Subroutine printCoords(coords, cKey)
+  Subroutine printCoordsSR(coords, cKey)
+  Subroutine zeroForces(coords, cKey)
+  Subroutine makeNL(nl, coords, rVerlet)
+  Subroutine printNLSummary(nl, cKeyIn)
+  Subroutine printNLSummary_Individual(nl, cKey)
+  Function SubCellKey (scAlat, scW, x, y, z) Result (key)
+  Function ljEnergy(sigma, r) Result (vr)
+  Function ljForce(sigma, r) Result (fr)
+========================================================================
+Module interpolation        interpolation.f90
+========================================================================
+  Function InterpLagrange(x, points, derivativeIn) RESULT (output)
+  Function Lagrange_FX(x, points) RESULT (output)
+  Function Lagrange_dFX(x, points) RESULT (output)
+  Function Lagrange_nFX(x, points, n) RESULT (output)
+  Function PointInterp(points,x,subsetSize,derivativeIn,inputSetStartIn,inputSetLengthIn,verboseIn) RESULT (yArray)
+  Function InterpPoints(dataPointsIn, pointsOutCount, interpNodes) RESULT (dataPointsOut)
+  Function FullInterp(dataPoints) RESULT (coefficients)
+  Function FullInterpPoints(dataPoints, pointsOutCount) RESULT (dataPointsOut)
+  Function PointInterp3DArr(points,x,fN,subsetSize,derivativeIn) RESULT (yArray)
+  Function CheckXpos(xStart, xEnd, xPos, subsetSize) Result (xPosNew)
+  Subroutine xPosUpperLower(xPos, subsetSize, xPosUpper, xPosLower)
+========================================================================
+Module isotopesTypes        isotopes.f90
+========================================================================
+========================================================================
+Module isotopes        isotopes.f90
+========================================================================
+  Subroutine loadIsotopes(isotopesList)
+  Subroutine loadIsotopesKeys(isotopesList)
+  Subroutine printIsotopeDetails(isotopeDetails)
+  Function SearchIsotopes(protons, neutrons, isotopesList) Result (isotopeDetails)
+  Subroutine loadElements(elementsList)
+  Function SearchElements(elementSymbol, elementsList) Result (elementDetails)
+  Subroutine loadIsotopesData(isotopesList)
+  Subroutine loadElementsData(elementsList)
+========================================================================
+Module keysMod        keysMod.f90
+========================================================================
+  Function DoubleKey(keyA, keyB) RESULT (keyU)
+  Function TripleKey(keyA, keyB, keyC) RESULT (keyU)
+  Function IsotopeKey(protons,neutrons) RESULT (keyI)
+========================================================================
+Module kinds        kinds.f90
+========================================================================
+========================================================================
+Module laplaceTransforms        laplaceTransforms.f90
+========================================================================
+  Function GaverStehfestWeighting(N, weightingIn) RESULT (weighting)
+  Function GaverStehfestWeightingQ(N, weightingIn) RESULT (weighting)
+  Function GaverStehfest(funcInS, t, p, mIn) RESULT (ft)
+  Function ltDecay(s, p) RESULT (fs)
+  Function ltExp(s, p) RESULT (fs)
+========================================================================
+Module largeIntTypes        largeInt.f90
+========================================================================
+========================================================================
+Module largeInt        largeInt.f90
+========================================================================
+  Function ALargerThanB(liA, liB) RESULT (result)
+  Subroutine storeLargeInt(objIn, valIn)
+  Subroutine printLargeInt(objIn)
+  Subroutine multLargeInt(vli)
+========================================================================
+Module libBP        libBP.f90
+========================================================================
+========================================================================
+Module linearAlgebra        linearAlgebra.f90
+========================================================================
+  Function SolveLinearSet(aMatrixIn, yMatrixIn) RESULT (xMatrix)
+  Function SolveLinearMatrix(aMatrixIn, yMatrixIn) RESULT (xMatrix)
+========================================================================
+Module lmaM        lmaM.f90
+========================================================================
+  Function LMA(points, calcFunction, parametersIn, weightingIn, limitsLowerIn, limitsUpperIn) &
+  Function LMA_Calc(J,R,lambda,parametersIn,weighting) RESULT (parametersOut)
+  Function LMA_Lambda(J) RESULT (lambda)
+  Function LMA_FWrapper(calcFunction,x,parameters,pSize,limitsLower,limitsUpper) RESULT (fx)
+  Function LMA_FunctionRSS(points, calcFunction, parameters) RESULT (rss)
+  Function LMA_Polynomial(x,parameters,pSize) RESULT (y)
+  Function LMA_BirchMurn(x,parameters,pSize) RESULT (y)
+  Function LMA_Exp(x,parameters,pSize) RESULT (y)
+  Function LMA_ExpDens(x,parameters,pSize) RESULT (y)
+========================================================================
+Module logicalMod        logicalMod.f90
+========================================================================
+  Function FlipLogical(logicalIn) RESULT (logicalOut)
+========================================================================
+Module materialsTypes        materials.f90
+========================================================================
+========================================================================
+Module materials        materials.f90
+========================================================================
+========================================================================
+Module maths        maths.f90
+========================================================================
+========================================================================
+Module matrix        matrix.f90
+========================================================================
+  Interface Trace
+  Interface PivotMatrix
+  Function InvertMatrix(xMatrix) RESULT (xMatrixInverse)
+  Function TransposeMatrix(xMatrix) RESULT (xMatrixTranspose)
+  Function IdentityMatrix(iMatrix) RESULT (oMatrix)
+  Function DiagMatrix(iMatrix) RESULT (oMatrix)
+  Function Trace_R(iMatrix) RESULT (output)
+  Function Trace_I(iMatrix) RESULT (output)
+  Function MatAdd(xMatrix,yMatrix) RESULT (oMatrix)
+  Function MatMult(xMatrix,yMatrix) RESULT (oMatrix)
+  Function ScalarMult(scalar,xMatrix) RESULT (oMatrix)
+  Subroutine LUDecomp(xMatrix, lMatrix, uMatrix)
+  Subroutine PivotMatrix_1D(xMatrix, pivotMap, operationIn)
+  Subroutine PivotMatrix_2D(xMatrix, pivotMap, operationIn)
+  Subroutine PositiveYMatrix(X,Y)
+  Subroutine LnYMatrix(Y)
+========================================================================
+Module mpiSubsTypes        mpiSubs.f90
+========================================================================
+========================================================================
+Module mpiSubs        mpiSubs.f90
+========================================================================
+  Subroutine m_initMpi(mpiIn)
+  Function M_Loop(mpiIn, loop) Result (result)
+========================================================================
+Module newtonGauss        newtonGauss.f90
+========================================================================
+  Function NewtonGaussOpt(J,R) RESULT (P)!
+========================================================================
+Module plotTypes        plot.f90
+========================================================================
+========================================================================
+Module plot        plot.f90
+========================================================================
+  Subroutine plotInit(dataObj)
+  Subroutine plotReadInput(dataObj, inputFile)
+  Subroutine plotLoadData(dataObj, filePath, fitList)
+  Subroutine plotFit(dataObj, dataArray, label, rowStart, rowEnd, colX, colY, fitType, dataPoints)
+  Subroutine plotStyle(dataObj, marker, linestyle, dataSetIn)
+  Subroutine plotMake(dataObj)
+========================================================================
+Module potentialsTypes        potentials.f90
+========================================================================
+========================================================================
+Module potentials        potentials.f90
+========================================================================
+  Subroutine initPotential(potential)
+  Subroutine loadPotential(filePath, potential)
+  Subroutine updatePotential(potential)
+  Subroutine printPotentialSummary(potential)
+  Subroutine printPotentialSummary_Full(potential)
+  Function SearchPotential (searchObj, potential, zblOverrideIn) Result (yArray)
+  Subroutine SearchPotential_A(searchObj, potential, yArray)
+  Function GetPotentialZBL (searchObj, potential) Result (yArray)
+  Function GetPotentialExpP (searchObj, potential) Result (yArray)
+  Function SearchPotential_Name (searchObj, potential) Result (yArray)
+  Function CheckIDMatch (idSearch_A, idSearch_B, idPot_A, idPot_B) Result (result)
+  Function Pot_Morse (parameters, x, derivativeIn) Result (yArray)
+  Subroutine outputPotential(potential,fileDirectory)
+========================================================================
+Module printModTypes        printMod.f90
+========================================================================
+========================================================================
+Module printMod        printMod.f90
+========================================================================
+  Interface printTableAddRow
+  Subroutine printBR(widthIn, brCharIn)
+  Subroutine printTableInit(table)
+  Subroutine printTableAddHeadersR(table,headerIn)
+  Subroutine printTableAddHeadersC(table,headerIn)
+  Subroutine printTableAddHeadersRC(table,headerIn)
+  Subroutine printTableAddRow_DP(table,rowIn)
+  Subroutine printTableAddRow_Char(table,rowIn)
+  Subroutine printTableMake(table)
+  Subroutine lineRow(table)
+  Subroutine headerRow(table)
+  Subroutine dataRow(table, row)
+  Subroutine dataRows(table)
+  Subroutine initPage(pageIn)
+  Subroutine addLinePage(lineText, styleIn, pageIn)
+  Subroutine printPage(pageIn)
+========================================================================
+Module qeTypes        qe.f90
+========================================================================
+========================================================================
+Module qe        qe.f90
+========================================================================
+  Subroutine readPwscfInput(filePath,qeInObj)
+  Subroutine writePwscfInput(filePath,qeInObj)
+========================================================================
+Module regression        regression.f90
+========================================================================
+  Function PolyFit(points,order) RESULT (coefficients)
+  Function LinearRegression(X,Y) RESULT (parameters)
+========================================================================
+Module rngDist        rngDist.f90
+========================================================================
+  Function RandomDist(distTypeIn,setupDistIn,lowerIn,upperIn,sigmaIn) RESULT (output)
+  Function RandomDist_GP(inputPoints, integratorIn) RESULT (outputPoints)
+  Function RandomVaryPoint(pointValue, maxVariation, sigma) RESULT (output)
+========================================================================
+Module rng        rng.f90
+========================================================================
+  Function RandomLCG(seedIn) RESULT (output)
+  Function RandomLCG_R() RESULT (output)
+  Function RandomInteger(lower,upper) RESULT (randInt)
+  Function RandomFloat(lower,upper) RESULT (randFloat)
+  Function IntegerList(listStart,listEnd,shuffles) RESULT (list)
+========================================================================
+Module scienceFunctions        scienceFunctions.f90
+========================================================================
+  Function F_ZBL (parametersIn) RESULT (y)
+  Function F_ZblFull (parametersIn) RESULT (yArray)
+========================================================================
+Module simulatedAnnealing        simulatedAnnealing.f90
+========================================================================
+========================================================================
+Module solveFunctions        solveFunctions.f90
+========================================================================
+  Function SolvePolynomial(coefficients, lower, upper, convergenceThresholdIn) RESULT (output)
+========================================================================
+Module sort        sort.f90
+========================================================================
+  Interface sortArray
+  Subroutine sortArray_DP_1D(arrayIn,orderIn,startRowIn,endRowIn)
+  Subroutine sortArray_DP_2D(arrayIn,orderIn,sortColIn,startRowIn,endRowIn)
+  Subroutine sortArray_Int_1D(arrayIn,orderIn,startRowIn,endRowIn)
+========================================================================
+Module specialistFunctions        specialistFunctions.f90
+========================================================================
+========================================================================
+Module splinesFitting        splinesFitting.f90
+========================================================================
+  Function BirchMurnFit(points, bp0Lower_In, bp0Upper_In) RESULT (coefficients)
+  Function ExpFit(dataPoints,terms) RESULT (parameters)
+  Function SingleDecayFit(dataPoints) RESULT (parameters)
+  Function DoubleDecayFit(dataPoints) RESULT (parameters)
+  Function TripleDecayFit(dataPoints) RESULT (parameters)
+  Function FitEmbeddingA(dataPoints, startPoint, endPoint) Result (coefficients)
+  Function FitEmbeddingB(dataPoints, startPoint, endPoint) Result (coefficients)
+  Function FitEmbeddingC(dataPoints, startPoint, endPoint) Result (coefficients)
+  Function FitDensity(dataPoints, startPointIn, endPointIn) Result (coefficients)
+  Subroutine FitDensity_Process(dataPoints, pointCount, startPoint, endPoint, coefficients)
+  Function FittingPoints(dataPointsIn, calcFunction, pointsOutCount, optArgA, optArgB) Result (dataPointsOut)
+  Function DoubleDecayFitRSS(dataPoints, a, b, lA, lB) RESULT (rss)
+  Function TripleDecayFitRSS(dataPoints, a, lA, b, lB, c, lC) RESULT (rss)
+  Function SplineAB(pointA, pointB, splineTypeIn) RESULT (coefficients)
+  Function SplineExpThird(xA,fxA,fpxA,xB,fxB,fpxB) RESULT (coefficients)
+  Function SplineExpFifth(xA,fxA,fpxA,fppxA,xB,fxB,fpxB,fppxB) RESULT (coefficients)
+  Function SplineNodes(inputNodes,numDataPoints,startPoint,endPoint,&
+  Function SplineComplete(inputPoints,interpSizeIn) RESULT (splinePoints)
+  Function VaryNode(nodeValue, varyAmount) RESULT (outputValue)
+  Function FillSplineResponse(dataPointsIn, startIn, endIn) RESULT (dataPointsOut)
+  Function SplinePoints(dataPointsIn, pointsOutCount,splineOrderIn) RESULT (dataPointsOut)
+  Subroutine CompleteNodeData(splineNodes, startIn, endIn)
+  Subroutine calcBP(bpObj)
+  Subroutine calcE(coords, nl, potential, cKeyIn)
+  Subroutine calcE_MPI(coords, nl, potential, cKey)
+  Subroutine calcE_Action(coords, nl, potential, cKey)
+  Subroutine calcEFS(coords, nl, potential, cKeyIn, resetForcesIn)
+  Subroutine calcEFS_MPI(coords, nl, potential, cKey, resetForces)
+  Subroutine calcEFS_Action(coords, nl, potential, cKey)
+========================================================================
+Module staticCalcsTypes        staticCalcs.f90
+========================================================================
+========================================================================
+Module staticCalcs        staticCalcs.f90
+========================================================================
+  Subroutine atomLabelIDs(potential, coords)
+  Subroutine printAtomLabelIDs(coords)
+========================================================================
+Module strings        strings.f90
+========================================================================
+  Interface BlankStringArray
+  Interface WipeStringArray
+  Function StrToUpper (input) RESULT (output)
+  Function StrToLower (input) RESULT (output)
+  Function StrInStr (haystack, needle, caseSensitiveIn) RESULT (inString)
+  Function StrReplace (input, needle, replace) RESULT (output)
+  Function NumericOnly (input) RESULT (output)
+  Function SingleSpaces (input) RESULT (output)
+  Function RemoveSpaces (input) RESULT (output)
+  Function RemoveSpacesQ (input) RESULT (output)
+  Function TrimSpaces(trimStr, padCharIn) Result (workingStr)
+  Function TrimStr(strIn) Result (strOut)
+  Function TrimmedLength(strIn) Result (strLen)
+  Function BlankString (input) RESULT (output)
+  Function BlankString1DArray (input) RESULT (output)
+  Function BlankString2DArray (input) RESULT (output)
+  Function WipeString (input) RESULT (output)
+  Function WipeString1DArray (input) RESULT (output)
+  Function WipeString2DArray (input) RESULT (output)
+  Function Spaces (length) RESULT (output)
+  Function SpacesRight (input) RESULT (output)
+  Function RemoveComments (input) RESULT (output)
+  Function RemoveQuotes (input) RESULT (output)
+  Function RemoveTrailing (input, trailingIn) RESULT (output)
+  Function IntToStr (input) RESULT (output)
+  Function DpToStr (input, numFormatIn) RESULT (output)
+  Function StrToInt (input) RESULT (output)
+  Function StrToDp (input) RESULT (outputDouble)
+  Function StrToBool (inputIn) RESULT (output)
+  Function RandName(randSwitchIn, prefixIn) Result (randNameOut)
+  Function TempFileName(randSwitchIn) Result (fileNameOut)
+  Function CleanString(stringIn) Result (stringOut)
+  Function TimeToHuman(timeIn) Result (stringOut)
+  Function IfStringEmpty(stringIn) Result (result)
+  Function IsBlank(stringIn) Result (result)
+  Function ConcatStr(stringA, stringB, forceTrimIn) Result (stringC)
+  Function StrMatch(strA_In,strB_In,caseSensitiveIn) Result (matchResult)
+  Function TestBoolStr(strTest) Result (result)
+  Subroutine explode(inputString, fieldSplit, outputArray, outputCount)
+  Subroutine randCharacter(letter, randSwitchIn, setIn)
+  Function CharCheckAlpha(charIn) Result (boolResult)
+  Function CharCheckNumeric(charIn) Result (boolResult)
+  Function CharCheckAlphaNumeric(charIn) Result (boolResult)
+  Function CharCheckReal(charIn) Result (boolResult)
+  Subroutine TrimString(trimStr, outputLength, padCharIn)
+  Subroutine StrCenter(line, lineLengthIn)
+  Subroutine StrAlign(line, align, lineLengthIn)
+  Function RandomLCG_strings(seedIn) RESULT (output)
+  Function RandomLCG_R_strings() RESULT (output)
+========================================================================
+Module testMod        testMod.f90
+========================================================================
+  Subroutine testActivity()
+  Subroutine testCalcIsotopeAmount()
+  Subroutine testGaverStehfest()
+  Subroutine testDecayChain()
+  Subroutine testNeighbourList()
+  Subroutine testStaticCalc()
+  Subroutine testCombinations()
+========================================================================
+Module units        units.f90
+========================================================================
+  Function UnitConvert(inputValue, inputUnitArg, outputUnitArg) RESULT (outputValue)
+  Subroutine LoadUnits()
+  Subroutine AddUnit(unitNameArg, siFactor, unitNameArgB_in, unitNameArgC_in)
+========================================================================
+Module vectors        vectors.f90
+========================================================================
+  Function CrossProduct(VectorA, VectorB) RESULT (VectorC)
+  Function DotProduct(VectorA, VectorB) RESULT (DotProductResult)
+  Function TripleProduct(VectorA, VectorB, VectorC) RESULT (TripleProductResult)
+  Function TripleProductSq(VectorIn) RESULT (TripleProductResult)
+  Function ColToSquare(columnMatrix) RESULT (squareMatrix)
+  Function SquareToCol(squareMatrix) RESULT (columnMatrix)

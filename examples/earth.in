@@ -1,0 +1,6 @@
+##PROGRAM falling
+#OUTPUTDIR earth
+#DENSITY earthdensity.csv
+#STEPS 1000
+#STARTV 0  MS-1   ! towards the center
+#STARTX 0 M      ! height above surface (- for below)
